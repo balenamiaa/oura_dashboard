@@ -1,6 +1,6 @@
 <script>
 </script>
 
-<div class="flex-grow p-8">
+<div class="flex-grow p-4 md:p-8">
     <slot />
 </div>

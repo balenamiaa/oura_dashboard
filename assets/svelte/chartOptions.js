@@ -1,6 +1,5 @@
 const COLOR_ZIN = "#FFB6C1";
 const COLOR_BALEN = "#73d1d1";
-
 const SLEEP_PHASES_COLORS = ["#FFC100", "#FF6500", "#C40C0C"];
 const ACTIVITY_CONTRIBUTORS_COLORS = ["#D6DAC8", "#FBF3D5", "#FDAF7B", "#BE7B72", "#824D74", "#401F71"];
 const READINESS_CONTRIBUTORS_COLORS = ["#EFECEC", "#F6FDC3", "#CDFADB", "#FFB0B0", "#FF8080", "#FFCF96", "#FC6736", "#0C2D57"];
@@ -67,7 +66,9 @@ function getBaseLineChartOptions(title) {
                 end: 100,
                 yAxisIndex: [0]
             }
-        ]
+        ],
+        responsive: true, // Add responsive option
+        maintainAspectRatio: false // Allow chart to resize freely
     };
 }
 
@@ -95,7 +96,9 @@ function getBaseAreaStackChartOptions(title, legendData) {
                 end: 100,
                 yAxisIndex: [0]
             }
-        ]
+        ],
+        responsive: true, // Add responsive option
+        maintainAspectRatio: false // Allow chart to resize freely
     };
 }
 
@@ -103,8 +106,16 @@ function getBasePieChartOptions(title) {
     return {
         title: { text: title },
         tooltip: { trigger: "item" },
-        legend: { orient: "vertical", left: "right" },
-        series: []
+        legend: {
+            orient: "horizontal",
+            top: "bottom",
+            left: "center",
+            type: "scroll", // Add scroll type for mobile responsiveness
+            padding: [20, 0, 20, 0] // Add padding for mobile
+        },
+        series: [],
+        responsive: true, // Add responsive option
+        maintainAspectRatio: false // Allow chart to resize freely
     };
 }
 

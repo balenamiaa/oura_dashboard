@@ -25,7 +25,7 @@
 
 <li>
     <span
-        class="block px-4 py-1 text-gray-600 hover:bg-gray-200 hover:text-gray-800 select-none"
+        class="block px-4 py-2 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 neon:hover:bg-gray-900 neon:text-white hover:text-gray-900 dark:hover:text-white cursor-pointer rounded-md"
         on:click={onClickHandler}
     >
         {item}

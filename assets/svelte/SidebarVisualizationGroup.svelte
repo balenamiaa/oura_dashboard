@@ -20,12 +20,15 @@
 
 <li>
     <div
-        class="flex items-center justify-between px-1 py-1 cursor-pointer hover:bg-gray-100"
+        class="flex items-center justify-between px-2 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 neon:hover:bg-gray-900 rounded-md"
         on:click={toggleGroup}
     >
-        <span class="text-gray-800 select-none w-[80%]">{title}</span>
+        <span
+            class="text-gray-800 dark:text-white neon:text-pink-500 select-none w-[80%]"
+            >{title}</span
+        >
         <svg
-            class="w-[20%] h-6 transition duration-200 ease-in-out transform {isOpen
+            class="w-[20%] h-8 text-gray-500 dark:text-gray-400 transition duration-200 ease-in-out transform {isOpen
                 ? 'rotate-180'
                 : ''}"
             viewBox="0 0 20 20"
