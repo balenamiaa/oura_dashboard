@@ -279,6 +279,7 @@ defmodule OuraDashboard.ChartsData do
 
           hrv =
             daily_models
+            |> Enum.reject(&is_nil(&1.hrv))
             |> Enum.map(fn model ->
               model.hrv.items
               |> Enum.reject(&is_nil/1)

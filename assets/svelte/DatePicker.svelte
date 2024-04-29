@@ -48,6 +48,7 @@
             month: selectedMonth,
             year: selectedYear,
         });
+        document.dispatchEvent(new CustomEvent("setOptionsToNull"));
     }
 </script>
 

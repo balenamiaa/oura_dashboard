@@ -7,8 +7,6 @@ defmodule OuraDashboard.Application do
 
   @impl true
   def start(_type, _args) do
-    :ets.new(:oura_cache, [:named_table, :public, read_concurrency: true])
-
     children = [
       {NodeJS.Supervisor, [path: LiveSvelte.SSR.NodeJS.server_path(), pool_size: 4]},
       OuraDashboardWeb.Telemetry,
@@ -17,6 +15,7 @@ defmodule OuraDashboard.Application do
       # Start a worker by calling: OuraDashboard.Worker.start_link(arg)
       # {OuraDashboard.Worker, arg},
       # Start to serve requests, typically the last entry
+      OuraDashboard.DataFetcher,
       OuraDashboardWeb.Endpoint
     ]
 

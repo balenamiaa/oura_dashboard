@@ -65,19 +65,7 @@ defmodule OuraDashboardWeb.LiveOuraDashboard do
   end
 
   defp get_oura_data(start_date, end_date) do
-    cache_key = "data_#{start_date}_#{end_date}"
-
-    oura_data =
-      case :ets.lookup(:oura_cache, cache_key) do
-        [{^cache_key, data}] ->
-          data
-
-        [] ->
-          data = OuraDashboard.OuraDataStore.fetch_data(start_date, end_date)
-          :ets.insert(:oura_cache, {cache_key, data})
-          data
-      end
-
-    oura_data
+    {:ok, data} = GenServer.call(OuraDashboard.DataFetcher, {:fetch_data, start_date, end_date}, :infinity)
+    data
   end
 end
