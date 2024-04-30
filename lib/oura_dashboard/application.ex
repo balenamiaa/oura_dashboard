@@ -9,6 +9,8 @@ defmodule OuraDashboard.Application do
   def start(_type, _args) do
     children = [
       {NodeJS.Supervisor, [path: LiveSvelte.SSR.NodeJS.server_path(), pool_size: 4]},
+      {Ecto.Migrator, repos: Application.fetch_env!(:oura_dashboard, :ecto_repos), skip: skip_migrations?()},
+      OuraDashboard.Repo,
       OuraDashboardWeb.Telemetry,
       {DNSCluster, query: Application.get_env(:oura_dashboard, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: OuraDashboard.PubSub},
@@ -31,5 +33,10 @@ defmodule OuraDashboard.Application do
   def config_change(changed, _new, removed) do
     OuraDashboardWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp skip_migrations?() do
+    # By default, sqlite migrations are run when using a release
+    System.get_env("RELEASE_NAME") != nil
   end
 end

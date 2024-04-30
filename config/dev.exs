@@ -1,5 +1,12 @@
 import Config
 
+# Configure your database
+config :oura_dashboard, OuraDashboard.Repo,
+  database: Path.expand("../oura_dashboard_dev.db", __DIR__),
+  pool_size: 5,
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -13,10 +20,8 @@ config :oura_dashboard, OuraDashboardWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "/le19kUj/xv+CALsRWL3ZjEDZVzDhSzlf9l9pCz0lNije2Db1ZDnRnkQKf6c9FZ0",
-  watchers: [
-    node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
-    # esbuild: {Esbuild, :install_and_run, [:oura_dashboard, ~w(--sourcemap=inline --watch)]},
+  secret_key_base: "qNW4TxnrSgndu9hp6Ct/o1dNhOzbgqAt9ohJKJQiolHBUBEc5autxa5c7AFzYPAO",
+  watchers: [node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
     tailwind: {Tailwind, :install_and_run, [:oura_dashboard, ~w(--watch)]}
   ]
 
@@ -71,3 +76,6 @@ config :phoenix_live_view,
   debug_heex_annotations: true,
   # Enable helpful, but potentially expensive runtime checks
   enable_expensive_runtime_checks: true
+
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false

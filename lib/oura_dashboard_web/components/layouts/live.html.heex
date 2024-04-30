@@ -1,1 +1,6 @@
-<.flash_group flash={@flash} /> <%= @inner_content %>
+<.flash_group flash={@flash} />
+<.svelte name="Topbar" props={%{currentUser: @current_user}} socket={@socket} />
+
+<div class="p-4 md:p-8">
+  <%= @inner_content %>
+</div>

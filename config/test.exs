@@ -1,11 +1,30 @@
 import Config
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :pbkdf2_elixir, :rounds, 1
+
+# Configure your database
+#
+# The MIX_TEST_PARTITION environment variable can be used
+# to provide built-in test partitioning in CI environment.
+# Run `mix help test` for more information.
+config :oura_dashboard, OuraDashboard.Repo,
+  database: Path.expand("../oura_dashboard_test.db", __DIR__),
+  pool_size: 5,
+  pool: Ecto.Adapters.SQL.Sandbox
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :oura_dashboard, OuraDashboardWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "BG0oA+Yh5Abb7JQjzspLemqi1df+/Y3JV+lb/RNktzsOtS9ortZKv6QfZHyXEJTF",
+  secret_key_base: "eOerKa+CVuDDwJJvyujwFebAmGfSVqazYvpAHPT/GAYYzJ2mgCS+jrGYRD5ucUpt",
   server: false
+
+# In test we don't send emails.
+config :oura_dashboard, OuraDashboard.Mailer, adapter: Swoosh.Adapters.Test
+
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
 
 # Print only warnings and errors during test
 config :logger, level: :warning

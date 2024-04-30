@@ -53,10 +53,10 @@
 </script>
 
 <div
-    class="datepicker bg-white dark:bg-gray-800 rounded-lg shadow-md font-sans"
+    class="datepicker bg-white dark:bg-gray-800 md:rounded-lg shadow-md font-sans"
 >
     <div
-        class="datepicker-header bg-blue-500 dark:bg-blue-800 neon:bg-pink-600 text-white py-4 text-center rounded-t-lg"
+        class="datepicker-header bg-blue-500 dark:bg-blue-800 neon:bg-pink-600 text-white py-4 text-center md:rounded-t-lg"
     >
         <h2 class="text-xl font-semibold">
             {months[selectedMonth]}

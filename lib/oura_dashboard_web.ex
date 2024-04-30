@@ -52,7 +52,16 @@ defmodule OuraDashboardWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {OuraDashboardWeb.Layouts, :app}
+        layout: {OuraDashboardWeb.Layouts, :live}
+
+      unquote(html_helpers())
+    end
+  end
+
+  def live_view_no_pad do
+    quote do
+      use Phoenix.LiveView,
+        layout: {OuraDashboardWeb.Layouts, :live_no_pad}
 
       unquote(html_helpers())
     end

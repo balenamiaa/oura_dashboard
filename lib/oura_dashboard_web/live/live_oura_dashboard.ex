@@ -1,5 +1,5 @@
 defmodule OuraDashboardWeb.LiveOuraDashboard do
-  use OuraDashboardWeb, :live_view
+  use OuraDashboardWeb, :live_view_no_pad
   use LiveSvelte.Components
 
   @chart_items_trends [

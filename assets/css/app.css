@@ -37,3 +37,7 @@
 .visualization-tooltip-center {
     transform: translate3d(0, 0, 0) !important;
 }
+
+* {
+    box-sizing: border-box;
+}

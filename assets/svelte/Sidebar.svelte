@@ -18,20 +18,10 @@
             item.toLowerCase().includes(query.toLowerCase()),
         );
     }
-
-    let theme = "light";
-
-    function toggleTheme() {
-        theme = theme === "light" ? "dark" : "light";
-        document.documentElement.classList.toggle("dark");
-        document.dispatchEvent(
-            new CustomEvent("themeChanged", { detail: theme }),
-        );
-    }
 </script>
 
 <div
-    class="w-64 bg-white dark:bg-gray-800 shadow-md p-4 flex-none neon:border-r neon:border-pink-500"
+    class="w-64 bg-white dark:bg-gray-800 p-4 flex-none neon:border-r neon:border-pink-500"
 >
     <div class="mb-8">
         <h1
@@ -63,17 +53,4 @@
             items={filteredItemsComposition}
         />
     </ul>
-
-    <div class="mt-4">
-        <button
-            class="w-full py-2 px-4 flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-800 neon:focus:ring-pink-500"
-            on:click={toggleTheme}
-        >
-            {#if theme === "light"}
-                <i class="fas fa-moon mr-2"></i> Dark Mode
-            {:else}
-                <i class="fas fa-sun mr-2"></i> Light Mode
-            {/if}
-        </button>
-    </div>
 </div>

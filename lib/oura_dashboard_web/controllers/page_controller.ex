@@ -1,7 +1,7 @@
 defmodule OuraDashboardWeb.PageController do
   use OuraDashboardWeb, :controller
 
-  # def home(conn, _params) do
-  #   render(conn, :home, layout: false)
+  # def index(conn, _params) do
+  #   render(conn, :index, layout: false)
   # end
 end

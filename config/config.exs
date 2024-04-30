@@ -8,6 +8,7 @@
 import Config
 
 config :oura_dashboard,
+  ecto_repos: [OuraDashboard.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
@@ -19,7 +20,16 @@ config :oura_dashboard, OuraDashboardWeb.Endpoint,
     layout: false
   ],
   pubsub_server: OuraDashboard.PubSub,
-  live_view: [signing_salt: "hhRgugOg"]
+  live_view: [signing_salt: "KRjDIY4t"]
+
+# Configures the mailer
+#
+# By default it uses the "Local" adapter which stores the emails
+# locally. You can see the emails in your browser, at "/dev/mailbox".
+#
+# For production it's recommended to configure a different adapter
+# at the `config/runtime.exs`.
+config :oura_dashboard, OuraDashboard.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure tailwind (the version is required)
 config :tailwind,

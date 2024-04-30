@@ -17,7 +17,7 @@
     }
 </script>
 
-<div class="min-h-screen flex bg-gray-100 dark:bg-gray-900 neon:bg-black">
+<div class="min-h-screen flex">
     <div
         id="tooltip-wrapper"
         class="fixed top-8 left-[50%] transform translate-x-[-50%] z-10 w-[80%] h-[50vh] pointer-events-none"
@@ -25,22 +25,23 @@
 
     <div class="md:hidden">
         <button
-            class="fixed top-4 left-4 z-50 p-2 bg-white dark:bg-gray-800 rounded-md shadow-md focus:outline-none"
+            class="fixed top-[50%] left-1 z-50 p-1 bg-white dark:bg-gray-800 rounded-none shadow-md focus:outline-none"
             on:click={toggleSidebar}
         >
             <svg
-                class="w-6 h-6 text-gray-700 dark:text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-6 h-6 transition-transform duration-300"
+                class:rotate-180={isSidebarOpen}
             >
                 <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                ></path>
+                    d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+                />
             </svg>
         </button>
     </div>
@@ -54,7 +55,7 @@
     </div>
 
     <div class="flex-1 transition duration-300 ease-in-out">
-        <div class="md:p-8">
+        <div class="p-1 md:p-8">
             <DatePicker {live} {startDate} />
         </div>
         <Visualizations {chartsData} />
