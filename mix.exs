@@ -38,6 +38,7 @@ defmodule OuraDashboard.MixProject do
       {:ecto_sql, "~> 3.10"},
       {:ecto_sqlite3, ">= 0.0.0"},
       {:swoosh, "~> 1.4"},
+      {:finch, "~> 0.8"},
       {:phoenix_html, "~> 4.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.20.2"},
