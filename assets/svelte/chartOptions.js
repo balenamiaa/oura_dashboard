@@ -44,10 +44,10 @@ export const DEFAULT_LOADING_OPTIONS = (() => {
 
 function getBaseLineChartOptions(title) {
     return {
-        title: { text: title },
+        title: { left: "center", text: title },
         tooltip: { trigger: "axis" },
-        legend: { data: ["Zin", "Balen"] },
-        grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
+        legend: { top: "5%", type: "scroll", data: ["Zin", "Balen"] },
+        grid: { left: "4%", top: "12%", right: "12%", bottom: "10%", containLabel: true },
         xAxis: { type: "time", boundaryGap: false },
         yAxis: { type: "value" },
         series: [],
@@ -67,17 +67,17 @@ function getBaseLineChartOptions(title) {
                 yAxisIndex: [0]
             }
         ],
-        responsive: true, // Add responsive option
-        maintainAspectRatio: false // Allow chart to resize freely
+        responsive: true,
+        maintainAspectRatio: false
     };
 }
 
 function getBaseAreaStackChartOptions(title, legendData) {
     return {
-        title: { text: title },
+        title: { left: "center", text: title },
         tooltip: { trigger: "axis" },
-        legend: { data: legendData },
-        grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
+        legend: { top: "5%", type: "scroll", data: legendData },
+        grid: { left: "4%", top: "12%", right: "12%", bottom: "10%", containLabel: true },
         xAxis: { type: "time", boundaryGap: false },
         yAxis: { type: "value" },
         series: [],
@@ -97,25 +97,58 @@ function getBaseAreaStackChartOptions(title, legendData) {
                 yAxisIndex: [0]
             }
         ],
-        responsive: true, // Add responsive option
-        maintainAspectRatio: false // Allow chart to resize freely
+        responsive: true,
+        maintainAspectRatio: false,
+        media: [
+            {
+                query: {
+                    maxWidth: 768
+                },
+                option: {
+                    tooltip: {
+                        className: "visualization-tooltip-center w-full",
+                        appendTo: function (_chartContainer) {
+                            return document.getElementById('tooltip-wrapper');
+                        },
+                    }
+                }
+            }
+        ]
     };
 }
 
 function getBasePieChartOptions(title) {
     return {
-        title: { text: title },
+        title: { left: "center", text: title },
         tooltip: { trigger: "item" },
         legend: {
+            top: "5%",
             orient: "horizontal",
             top: "bottom",
             left: "center",
-            type: "scroll", // Add scroll type for mobile responsiveness
-            padding: [20, 0, 20, 0] // Add padding for mobile
+            type: "scroll",
+            padding: [20, 0, 20, 0]
         },
         series: [],
-        responsive: true, // Add responsive option
-        maintainAspectRatio: false // Allow chart to resize freely
+        responsive: true,
+        maintainAspectRatio: false,
+        media: [
+            {
+                query: {
+                    maxWidth: 768
+                },
+                option: {
+                    series: [
+                        {
+                            radius: ['20%', '40%'],
+                        },
+                        {
+                            radius: ['20%', '40%'],
+                        }
+                    ]
+                }
+            }
+        ]
     };
 }
 
@@ -363,6 +396,7 @@ export function generateSleepPhasesOptions(chartsData) {
 
     options.tooltip = {
         trigger: 'axis',
+
         formatter: function (params) {
             const zinData = params.filter(param => param.seriesId.startsWith('z'));
             const balenData = params.filter(param => param.seriesId.startsWith('b'));
@@ -370,7 +404,7 @@ export function generateSleepPhasesOptions(chartsData) {
             const totalBalen = balenData.reduce((sum, item) => sum + item.value[2], 0);
 
             let table = `
-              <div class="bg-white rounded-lg shadow-md p-4">
+              <div class="bg-white rounded-lg shadow-md p-4 mx-auto">
                 <table class="w-full text-sm text-left text-gray-500">
                   <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
@@ -464,6 +498,7 @@ export function generateActivityContributorsOptions(chartsData) {
 
     options.tooltip = {
         trigger: 'axis',
+
         formatter: function (params) {
             const zinData = params.filter(param => param.seriesId.startsWith('z'));
             const balenData = params.filter(param => param.seriesId.startsWith('b'));
@@ -471,7 +506,7 @@ export function generateActivityContributorsOptions(chartsData) {
             const totalBalen = balenData.reduce((sum, item) => sum + item.value[1], 0);
 
             let table = `
-          <div class="bg-white rounded-lg shadow-md p-4">
+          <div class="bg-white rounded-lg shadow-md p-4 mx-auto">
             <table class="w-full text-sm text-left text-gray-500">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
@@ -578,6 +613,7 @@ export function generateReadinessContributorsOptions(chartsData) {
 
     options.tooltip = {
         trigger: 'axis',
+
         formatter: function (params) {
             const zinData = params.filter(param => param.seriesId.startsWith('z'));
             const balenData = params.filter(param => param.seriesId.startsWith('b'));
@@ -585,7 +621,7 @@ export function generateReadinessContributorsOptions(chartsData) {
             const totalBalen = balenData.reduce((sum, item) => sum + item.value[1], 0);
 
             let table = `
-          <div class="bg-white rounded-lg shadow-md p-4">
+          <div class="bg-white rounded-lg shadow-md p-4 mx-auto">
             <table class="w-full text-sm text-left text-gray-500">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
@@ -686,10 +722,10 @@ export function generateHeartRateZonesOptions(chartsData) {
     }
 
     const options = {
-        title: { text: "Heart Rate Zones" },
+        title: { left: "center", text: "Heart Rate Zones" },
         tooltip: { trigger: "axis" },
-        legend: { data: ["Resting Heart Rate", "Light", "Moderate", "Vigorous", "Maximum"] },
-        grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
+        legend: { top: "5%", type: "scroll", data: ["Resting Heart Rate", "Light", "Moderate", "Vigorous", "Maximum"] },
+        grid: { left: "4%", top: "12%", right: "12%", bottom: "10%", containLabel: true },
         yAxis: { type: "category", data: ["Zin", "Balen"] },
         xAxis: { type: "value" },
         series: []

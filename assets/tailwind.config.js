@@ -14,6 +14,9 @@ module.exports = {
     "./svelte/**/*.svelte"
   ],
   theme: {
+    screens: {
+      md: "1024px"
+    },
     extend: {
       colors: {
         brand: "#FD4F00",

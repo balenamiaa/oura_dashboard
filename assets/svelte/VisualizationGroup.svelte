@@ -8,10 +8,10 @@
 </script>
 
 <div
-    class="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-md neon:shadow-neon"
+    class="mb-8 bg-white dark:bg-gray-800 md:rounded-lg shadow-md neon:shadow-neon"
 >
     <div
-        class="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-700 neon:bg-gray-900 rounded-t-lg cursor-pointer"
+        class="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-700 neon:bg-gray-900 md:rounded-t-lg cursor-pointer"
         on:click={toggleOpen}
     >
         <h2
@@ -37,7 +37,7 @@
         </svg>
     </div>
     {#if isOpen}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-1 md:p-4">
             <slot />
         </div>
     {/if}

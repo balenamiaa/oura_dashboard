@@ -24,6 +24,9 @@ import topbar from "../vendor/topbar"
 import { getHooks } from "live_svelte"
 import * as Components from "../svelte/**/*.svelte"
 
+import "./echarts_darktheme"
+import "./echarts_vintagetheme"
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, { hooks: getHooks(Components), params: { _csrf_token: csrfToken } })
 

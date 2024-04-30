@@ -33,3 +33,7 @@
 .animate-highlight-pop {
     animation: highlight-pop 1s ease-in-out;
 }
+
+.visualization-tooltip-center {
+    transform: translate3d(0, 0, 0) !important;
+}

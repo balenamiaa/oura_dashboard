@@ -10,7 +10,16 @@
     let chartContainer;
     let theme = "vintage";
 
+    function initTheme() {
+        if (document.documentElement.classList.contains("dark")) {
+            theme = "dark";
+        } else {
+            theme = "vintage";
+        }
+    }
+
     onMount(() => {
+        initTheme();
         chartInstance = echarts.init(chartContainer, theme);
         chartInstance.setOption(options, true, true);
 
@@ -61,5 +70,5 @@
 
 <div
     bind:this={chartContainer}
-    class="w-full h-[500px] bg-white dark:bg-gray-800 rounded-lg p-4 neon:shadow-neon"
+    class="w-full h-[32rem] bg-white dark:bg-gray-800 rounded-lg neon:shadow-neon"
 ></div>
