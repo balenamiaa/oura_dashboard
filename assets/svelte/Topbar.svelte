@@ -1,15 +1,13 @@
 <script>
+    import { theme } from "./stores";
+
+    export let live;
     export let currentUser;
 
-    let theme = "light";
     let isMenuOpen = false;
 
     function toggleTheme() {
-        theme = theme === "light" ? "dark" : "light";
-        document.documentElement.classList.toggle("dark");
-        document.dispatchEvent(
-            new CustomEvent("themeChanged", { detail: theme }),
-        );
+        theme.update((theme) => (theme === "dark" ? "light" : "dark"));
     }
 
     function toggleMenu() {

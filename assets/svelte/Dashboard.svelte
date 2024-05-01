@@ -8,7 +8,8 @@
     export let chartItemsTrends;
     export let chartItemsComposition;
     export let chartsData;
-    export let startDate;
+    export let startDateStr;
+    export let endDateStr;
 
     let isSidebarOpen = false;
 
@@ -56,7 +57,7 @@
 
     <div class="flex-1 transition duration-300 ease-in-out">
         <div class="p-1 md:p-8">
-            <DatePicker {live} {startDate} />
+            <DatePicker {live} {startDateStr} {endDateStr} />
         </div>
         <Visualizations {chartsData} />
     </div>

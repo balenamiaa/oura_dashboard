@@ -23,7 +23,7 @@ defmodule OuraDashboardWeb.LiveOuraDashboard do
 
   def render(assigns) do
     ~H"""
-    <.Dashboard chartItemsTrends={@chart_items_trends} chartItemsComposition={@chart_items_composition} chartsData={@charts_data} startDate={@start_date} />
+    <.Dashboard chartItemsTrends={@chart_items_trends} chartItemsComposition={@chart_items_composition} chartsData={@charts_data} startDateStr={@start_date_str} endDateStr={@end_date_str} />
     """
   end
 
@@ -31,20 +31,21 @@ defmodule OuraDashboardWeb.LiveOuraDashboard do
     current_date = Date.utc_today()
     current_date_month_start = Date.beginning_of_month(current_date)
     start_date_str = Date.to_iso8601(current_date_month_start)
+    end_date_str = Date.to_iso8601(Date.end_of_month(current_date_month_start))
 
     socket =
       assign(socket,
         chart_items_trends: @chart_items_trends,
         chart_items_composition: @chart_items_composition,
-        start_date: start_date_str,
+        start_date_str: start_date_str,
+        end_date_str: end_date_str,
         charts_data: nil
       )
 
     self_pid = self()
 
     Task.start(fn ->
-      date_month_end = Date.end_of_month(current_date_month_start)
-      oura_data = get_oura_data(start_date_str, Date.to_iso8601(date_month_end))
+      oura_data = get_oura_data(start_date_str, end_date_str)
       charts_data = OuraDashboard.ChartsData.generate_charts_data(oura_data)
       send(self_pid, {:update_charts_data, charts_data})
     end)
@@ -52,10 +53,8 @@ defmodule OuraDashboardWeb.LiveOuraDashboard do
     {:ok, socket}
   end
 
-  def handle_event("dateChanged", %{"month" => month, "year" => year}, socket) do
-    {:ok, start_date} = Date.new(year, month + 1, 1)
-    end_date = Date.end_of_month(start_date)
-    oura_data = get_oura_data(Date.to_iso8601(start_date), Date.to_iso8601(end_date))
+  def handle_event("date_changed", %{"start_date_str" => start_date_str, "end_date_str" => end_date_str}, socket) do
+    oura_data = get_oura_data(start_date_str, end_date_str)
     charts_data = OuraDashboard.ChartsData.generate_charts_data(oura_data)
     {:noreply, assign(socket, :charts_data, charts_data)}
   end

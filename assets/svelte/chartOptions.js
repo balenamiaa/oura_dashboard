@@ -65,7 +65,21 @@ function getBaseLineChartOptions(title) {
                 start: 0,
                 end: 100,
                 yAxisIndex: [0]
-            }
+            },
+            {
+                type: "inside",
+                show: true,
+                start: 0,
+                end: 100,
+                xAxisIndex: [0]
+            },
+            {
+                type: "inside",
+                show: true,
+                start: 0,
+                end: 100,
+                yAxisIndex: [0]
+            },
         ],
         responsive: true,
         maintainAspectRatio: false
@@ -95,7 +109,21 @@ function getBaseAreaStackChartOptions(title, legendData) {
                 start: 0,
                 end: 100,
                 yAxisIndex: [0]
-            }
+            },
+            {
+                type: "inside",
+                show: true,
+                start: 0,
+                end: 100,
+                xAxisIndex: [0]
+            },
+            {
+                type: "inside",
+                show: true,
+                start: 0,
+                end: 100,
+                yAxisIndex: [0]
+            },
         ],
         responsive: true,
         maintainAspectRatio: false,
@@ -396,7 +424,7 @@ export function generateSleepPhasesOptions(chartsData) {
 
     options.tooltip = {
         trigger: 'axis',
-
+        position: ["0%", "0%"],
         formatter: function (params) {
             const zinData = params.filter(param => param.seriesId.startsWith('z'));
             const balenData = params.filter(param => param.seriesId.startsWith('b'));
@@ -498,7 +526,7 @@ export function generateActivityContributorsOptions(chartsData) {
 
     options.tooltip = {
         trigger: 'axis',
-
+        position: ["0%", "0%"],
         formatter: function (params) {
             const zinData = params.filter(param => param.seriesId.startsWith('z'));
             const balenData = params.filter(param => param.seriesId.startsWith('b'));
@@ -613,7 +641,7 @@ export function generateReadinessContributorsOptions(chartsData) {
 
     options.tooltip = {
         trigger: 'axis',
-
+        position: ["0%", "0%"],
         formatter: function (params) {
             const zinData = params.filter(param => param.seriesId.startsWith('z'));
             const balenData = params.filter(param => param.seriesId.startsWith('b'));
