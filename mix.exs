@@ -52,7 +52,7 @@ defmodule OuraDashboard.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
-      {:oura_api, path: "../oura_api"},
+      {:oura_api, git: "git@github.com:balenamiaa/oura_api", branch: "main"},
       {:live_svelte, "~> 0.13.1"}
     ]
   end
