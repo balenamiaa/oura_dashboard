@@ -31,9 +31,6 @@ config :oura_dashboard, OuraDashboardWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :oura_dashboard, OuraDashboard.Mailer, adapter: Swoosh.Adapters.Local
 
-# config :oura_dashboard, zin_personal_token: "PERSONAL TOKEN 1"
-# config :oura_dashboard, balen_personal_token: "PERSON TOKEN 2"
-
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.0",

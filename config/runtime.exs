@@ -20,6 +20,9 @@ if System.get_env("PHX_SERVER") do
   config :oura_dashboard, OuraDashboardWeb.Endpoint, server: true
 end
 
+config :oura_dashboard, zin_personal_token: System.get_env("ZIN_PERSONAL_TOKEN")
+config :oura_dashboard, balen_personal_token: System.get_env("BALEN_PERSONAL_TOKEN")
+
 if config_env() == :prod do
   database_path =
     System.get_env("DATABASE_PATH") ||

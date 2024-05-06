@@ -60,3 +60,5 @@ rel/
 *.db*
 
 /assets/script.ex
+
+set_tokens.ps1

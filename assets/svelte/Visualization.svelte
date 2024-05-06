@@ -46,12 +46,6 @@
             chartInstance.setOption(options, true, true);
         }
     }
-
-    onDestroy(() => {
-        if (chartInstance) {
-            chartInstance.dispose();
-        }
-    });
 </script>
 
 <div

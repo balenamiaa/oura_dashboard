@@ -3,7 +3,7 @@
 To start the webserver:
 
   * Ensure that nodejs and npm are installed for svelte's SSR.
-  * Ensure that the personal token lines are uncommented and set correctly in [config.exs](/config/config.exs)
+  * Ensure that the personal token environment variables (ZIN_PERSONAL_TOKEN and BALEN_PERSONAL_TOKEN) are set.
   * Run `mix setup` to install and setup dependencies
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
