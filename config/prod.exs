@@ -11,6 +11,8 @@ config :oura_dashboard, OuraDashboardWeb.Endpoint,
 # Configures Swoosh API Client
 # config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: OuraDashboard.Finch
 
+config :swoosh, :api_client, false
+
 # Disable Swoosh Local Memory Storage
 # config :swoosh, local: false
 
