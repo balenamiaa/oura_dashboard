@@ -8,12 +8,14 @@
 
     let chartInstance;
     let chartContainer;
+    let resizeObserver;
 
     onMount(() => {
         chartInstance = echarts.init(chartContainer, theme);
         chartInstance.setOption(options, true, true);
 
-        window.addEventListener("resize", handleResize);
+        resizeObserver = new ResizeObserver(handleResize);
+        resizeObserver.observe(chartContainer);
         document.addEventListener("setOptionsToNull", () => {
             chartInstance.setOption(DEFAULT_LOADING_OPTIONS, true, false);
         });
@@ -31,7 +33,7 @@
         });
 
         return () => {
-            window.removeEventListener("resize", handleResize);
+            resizeObserver.disconnect();
         };
     });
 
